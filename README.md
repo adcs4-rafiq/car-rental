@@ -44,3 +44,4 @@ cp terraform.tfvars.example terraform.tfvars
 # Fill in your Azure subscription ID
 terraform init && terraform plan && terraform apply
 ```
+# CI Test
