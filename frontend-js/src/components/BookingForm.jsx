@@ -157,7 +157,7 @@ export default function BookingForm({ cars, selectedCar, onSubmit, onSelectCar }
                   <span style={{ fontWeight: 500 }}>{r.value}</span>
                 </div>
               ))}
-              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '10px 0', marginTop: 4, background: '#eff6ff', borderRadius: 8, padding: '10px 12px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', marginTop: 4, background: '#eff6ff', borderRadius: 8, padding: '10px 12px' }}>
                 <span style={{ fontWeight: 700, color: '#1e293b' }}>Total</span>
                 <span style={{ fontWeight: 800, fontSize: 18, color: '#1a56db' }}>${total}</span>
               </div>
