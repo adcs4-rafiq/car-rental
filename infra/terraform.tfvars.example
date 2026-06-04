@@ -1,0 +1,9 @@
+# Copy this file to terraform.tfvars and fill in your real values
+# DO NOT commit terraform.tfvars to GitHub
+
+subscription_id     = "your-azure-subscription-id-here"
+location            = "eastus"
+resource_group_name = "carrental-rg"
+vm_size             = "Standard_B1s"
+admin_username      = "azureuser"
+ssh_public_key_path = "~/.ssh/id_rsa.pub"

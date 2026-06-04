@@ -1,0 +1,44 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:7-alpine
+    restart: always
+    networks:
+      - carrental-net
+
+  backend:
+    image: ${DOCKER_USERNAME}/carrental-backend:latest
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      - REDIS_HOST=redis
+    depends_on:
+      - redis
+    networks:
+      - carrental-net
+
+  worker:
+    image: ${DOCKER_USERNAME}/carrental-worker:latest
+    restart: always
+    environment:
+      - REDIS_HOST=redis
+    depends_on:
+      - redis
+    networks:
+      - carrental-net
+
+  frontend:
+    image: ${DOCKER_USERNAME}/carrental-frontend:latest
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - carrental-net
+
+networks:
+  carrental-net:
+    driver: bridge

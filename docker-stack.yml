@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:7-alpine
+    networks:
+      - carrental-net
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+
+  backend:
+    image: ${DOCKER_USERNAME:-yourusername}/carrental-backend:latest
+    ports:
+      - "5000:5000"
+    environment:
+      - REDIS_HOST=redis
+    networks:
+      - carrental-net
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+
+  worker:
+    image: ${DOCKER_USERNAME:-yourusername}/carrental-worker:latest
+    environment:
+      - REDIS_HOST=redis
+    networks:
+      - carrental-net
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+
+  frontend:
+    image: ${DOCKER_USERNAME:-yourusername}/carrental-frontend:latest
+    ports:
+      - "3000:80"
+    networks:
+      - carrental-net
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+
+networks:
+  carrental-net:
+    driver: overlay

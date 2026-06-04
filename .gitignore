@@ -1,0 +1,22 @@
+# Secrets — NEVER commit
+.env
+*.pem
+*.key
+terraform.tfvars
+terraform.tfstate
+terraform.tfstate.backup
+.terraform/
+.terraform.lock.hcl
+
+# Build artifacts
+**/bin/
+**/obj/
+**/node_modules/
+**/dist/
+**/__pycache__/
+**/*.pyc
+.pytest_cache/
+
+# IDE
+.vscode/
+.idea/

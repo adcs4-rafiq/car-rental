@@ -1,0 +1,46 @@
+services:
+  redis:
+    image: redis:7-alpine
+    networks:
+      - carrental-net
+
+  backend:
+    build:
+      context: ./backend-dotnet
+      dockerfile: Dockerfile
+    ports:
+      - "5001:5000"
+    environment:
+      - REDIS_HOST=redis
+      - ASPNETCORE_ENVIRONMENT=Development
+    depends_on:
+      - redis
+    networks:
+      - carrental-net
+
+  worker:
+    build:
+      context: ./worker-python
+      dockerfile: Dockerfile
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    depends_on:
+      - redis
+    networks:
+      - carrental-net
+
+  frontend:
+    build:
+      context: ./frontend-js
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - carrental-net
+
+networks:
+  carrental-net:
+    driver: bridge
