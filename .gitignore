@@ -20,3 +20,4 @@ terraform.tfstate.backup
 # IDE
 .vscode/
 .idea/
+%USERPROFILE%/.ssh
