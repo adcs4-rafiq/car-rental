@@ -33,7 +33,7 @@ services:
     image: ${DOCKER_USERNAME}/carrental-frontend:latest
     restart: always
     ports:
-      - "80:80"
+      - "8081:80"
     depends_on:
       - backend
     networks:
