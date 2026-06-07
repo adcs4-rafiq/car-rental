@@ -121,7 +121,7 @@ export default function App() {
           }}>🚗</div>
           <div>
             <div style={{ color: '#fff', fontWeight: 700, fontSize: 18, lineHeight: 1.2 }}>DriveEasy</div>
-            <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: 11 }}>Car Rental System</div>
+            <div style={{ color: 'rgba(255,255,255,0.5)', fontSize: 11 }}>Car Rental System v2.0</div>
           </div>
         </div>
 
